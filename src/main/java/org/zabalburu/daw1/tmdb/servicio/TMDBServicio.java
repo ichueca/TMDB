@@ -17,6 +17,14 @@ import org.zabalburu.daw1.util.PasswordManager;
 public class TMDBServicio {
     
     private UsuarioDAO usuarioDao = new UsuarioImpl();
+
+    public UsuarioDAO getUsuarioDao() {
+        return usuarioDao;
+    }
+
+    public void setUsuarioDao(UsuarioDAO usuarioDao) {
+        this.usuarioDao = usuarioDao;
+    }
     
     public Usuario getUsuario(Integer id){
         return usuarioDao.getUsuario(id);
@@ -39,12 +47,22 @@ public class TMDBServicio {
     }
     
     public boolean emailDisponible(String email){
-        Usuario u = usuarioDao.getUsuarios()
+        /*Usuario u = usuarioDao.getUsuarios()
                 .stream()
                 .filter(us -> us.getEmail().equalsIgnoreCase(email))
                 .findAny()
                 .orElse(null);
-        return u == null;
+        return u == null;*/
+        List<Usuario> usuarios = usuarioDao.getUsuarios();
+        boolean encontrado = false;
+        for (int i = 0; i < usuarios.size() && 
+                !encontrado; i++) {
+            if (usuarios.get(i).getEmail()
+                .equalsIgnoreCase(email)){
+                encontrado = true;
+            }
+        }
+        return !encontrado;
     }
     
     public Usuario login(String usuario, String password){

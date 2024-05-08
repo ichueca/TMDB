@@ -24,3 +24,5 @@
 *.swp
 *~.nib
 *.tmp
+*.token
+/nbproject/

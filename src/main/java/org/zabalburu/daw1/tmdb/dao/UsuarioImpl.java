@@ -24,7 +24,15 @@ import org.zabalburu.daw1.util.PasswordManager;
  */
 public class UsuarioImpl implements UsuarioDAO {
 
-    private final static Connection cnn = Conexion.getConexion();
+    private static Connection cnn = Conexion.getConexion();
+
+    public static Connection getCnn() {
+        return cnn;
+    }
+
+    public static void setCnn(Connection cnn) {
+        UsuarioImpl.cnn = cnn;
+    }
 
     @Override
     public Usuario getUsuario(Integer id) throws UsuarioNoExisteException {
@@ -154,7 +162,7 @@ public class UsuarioImpl implements UsuarioDAO {
         try {
             PreparedStatement pst = cnn.prepareStatement(
                     """
-                    Delete usuarios
+                    Delete From usuarios
                     where id=?
                     """);
             pst.setInt(1, id);
