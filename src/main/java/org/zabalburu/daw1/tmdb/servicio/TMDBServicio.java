@@ -19,6 +19,10 @@ public class TMDBServicio {
     
     private UsuarioDAO usuarioDao = new UsuarioImpl();
 
+    public TMDBServicio(){
+        
+    }
+    
     public UsuarioDAO getUsuarioDao() {
         return usuarioDao;
     }

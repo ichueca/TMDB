@@ -18,6 +18,10 @@ import org.zabalburu.daw1.util.Colores;
  */
 public class FrmLogin extends javax.swing.JFrame {
     private TMDBServicio servicio = new TMDBServicio();
+
+    public void setServicio(TMDBServicio servicio) {
+        this.servicio = servicio;
+    }
     /**
      * Creates new form FrmLogin
      */
@@ -76,6 +80,7 @@ public class FrmLogin extends javax.swing.JFrame {
         pnlDatos.add(lblTitulo, gridBagConstraints);
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtUsuario.setName("txtUsuario"); // NOI18N
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 teclaPulsada(evt);
@@ -92,6 +97,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnEntrar.setText("Entrar");
+        btnEntrar.setName("btnEntrar"); // NOI18N
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -106,6 +112,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.setName("btnSalir"); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -140,6 +147,7 @@ public class FrmLogin extends javax.swing.JFrame {
         lblError.setForeground(new java.awt.Color(255, 0, 51));
         lblError.setText(" ");
         lblError.setToolTipText("");
+        lblError.setName("lblError"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -150,6 +158,7 @@ public class FrmLogin extends javax.swing.JFrame {
         pnlDatos.add(lblError, gridBagConstraints);
 
         pwdPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pwdPassword.setName("pwdPassword"); // NOI18N
         pwdPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 teclaPulsada(evt);
@@ -191,6 +200,7 @@ public class FrmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, 
                 "Bienvenido a la Aplicación");
             System.exit(0);
+            //this.dispose();
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
