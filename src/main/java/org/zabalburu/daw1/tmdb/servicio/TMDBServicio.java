@@ -7,6 +7,7 @@ package org.zabalburu.daw1.tmdb.servicio;
 import java.util.List;
 import org.zabalburu.daw1.tmdb.dao.UsuarioDAO;
 import org.zabalburu.daw1.tmdb.dao.UsuarioImpl;
+import org.zabalburu.daw1.tmdb.exceptions.UsuarioNoExisteException;
 import org.zabalburu.daw1.tmdb.modelo.Usuario;
 import org.zabalburu.daw1.util.PasswordManager;
 
@@ -32,6 +33,10 @@ public class TMDBServicio {
     
     public List<Usuario> getUsuarios(){
         return usuarioDao.getUsuarios();
+    }
+    
+    public Usuario getUsuario(String usuario){
+        return usuarioDao.getUsuario(usuario);
     }
     
     public Usuario nuevoUsuario(Usuario nuevo){
@@ -66,7 +71,10 @@ public class TMDBServicio {
     }
     
     public Usuario login(String usuario, String password){
-        Usuario u = usuarioDao.getUsuario(usuario);
+        Usuario u = null;
+        try {
+            u = usuarioDao.getUsuario(usuario);
+        } catch (UsuarioNoExisteException ex){}
         if (u != null){
             if (!PasswordManager.comprobarContraseña(password, u.getPassword())){
                 u = null;

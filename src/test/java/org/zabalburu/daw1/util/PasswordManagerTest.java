@@ -36,7 +36,7 @@ public class PasswordManagerTest {
     public void testComprobarContraseña() {
         String password = "12345";
         String hash = PasswordManager.encriptarContraseña(password);
-        assertTrue(PasswordManager.comprobarContraseña("12345", hash));
+        assertTrue(PasswordManager.comprobarContraseña("12345", "$$2a$10$6DjRxCyoucVAIdCRGPx2Eelef31FnTz2e3D7A0ImOF1k7WOap2vHa"));
         assertFalse(PasswordManager.comprobarContraseña("123454", hash));
     }
     

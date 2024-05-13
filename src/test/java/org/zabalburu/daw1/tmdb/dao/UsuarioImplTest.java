@@ -20,7 +20,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import org.zabalburu.daw1.tmdb.UsuarioNoExisteException;
+import org.zabalburu.daw1.tmdb.exceptions.UsuarioNoExisteException;
 import org.zabalburu.daw1.tmdb.modelo.Usuario;
 import org.zabalburu.daw1.util.Conexion;
 import org.zabalburu.daw1.util.PasswordManager;

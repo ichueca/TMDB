@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.zabalburu.daw1.tmdb.UsuarioNoExisteException;
+import org.zabalburu.daw1.tmdb.exceptions.UsuarioNoExisteException;
 import org.zabalburu.daw1.tmdb.modelo.Usuario;
 import org.zabalburu.daw1.util.Conexion;
 import org.zabalburu.daw1.util.PasswordManager;
@@ -65,7 +65,7 @@ public class UsuarioImpl implements UsuarioDAO {
             PreparedStatement pst = cnn.prepareStatement(
                     """
                                 Select * From Usuarios
-                                Where usuario=?
+                                Where upper(usuario)=upper(?)
                                 """);
             pst.setString(1, usuario);
             ResultSet rst = pst.executeQuery();

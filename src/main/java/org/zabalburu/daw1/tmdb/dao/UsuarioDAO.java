@@ -5,7 +5,7 @@
 package org.zabalburu.daw1.tmdb.dao;
 
 import java.util.List;
-import org.zabalburu.daw1.tmdb.UsuarioNoExisteException;
+import org.zabalburu.daw1.tmdb.exceptions.UsuarioNoExisteException;
 import org.zabalburu.daw1.tmdb.modelo.Usuario;
 
 /**
