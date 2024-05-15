@@ -4,7 +4,10 @@
  */
 package org.zabalburu.daw1.tmdb.servicio;
 
+import info.movito.themoviedbapi.model.core.Movie;
 import java.util.List;
+import org.zabalburu.daw1.tmdb.dao.TMDBDAO;
+import org.zabalburu.daw1.tmdb.dao.TMDBImpl;
 import org.zabalburu.daw1.tmdb.dao.UsuarioDAO;
 import org.zabalburu.daw1.tmdb.dao.UsuarioImpl;
 import org.zabalburu.daw1.tmdb.exceptions.UsuarioNoExisteException;
@@ -18,6 +21,7 @@ import org.zabalburu.daw1.util.PasswordManager;
 public class TMDBServicio {
     
     private UsuarioDAO usuarioDao = new UsuarioImpl();
+    private TMDBDAO tmdbDao = new TMDBImpl();
 
     public TMDBServicio(){
         
@@ -85,5 +89,17 @@ public class TMDBServicio {
             }
         }
         return u;
+    }
+    
+    public List<Movie> getTopRated(){
+        return tmdbDao.getTopRated();
+    }
+    
+    public List<Movie> getNowPlaying(){
+        return tmdbDao.getNowPlaying();
+    }
+    
+    public List<Movie> getPopular(){
+        return tmdbDao.getPopular();
     }
 }

@@ -32,6 +32,7 @@ import org.zabalburu.daw1.util.PasswordManager;
  * @author ichueca
  */
 public class FrmRegistro extends javax.swing.JFrame {
+
     private String imagen = "no_image.jpg";
     private TMDBServicio servicio = new TMDBServicio();
 
@@ -371,8 +372,11 @@ public class FrmRegistro extends javax.swing.JFrame {
         usuario.setPassword(new String(pwdPassword.getPassword()));
         usuario.setUsuario(txtUsuario.getText());
         servicio.nuevoUsuario(usuario);
-        JOptionPane.showMessageDialog(this, 
-                "Usuario Regbistrado con Éxito!");
+        JOptionPane.showMessageDialog(this,
+                "Usuario Registrado con Éxito!");
+        FrmPrincipal frm = new FrmPrincipal();
+        frm.setUsuario(usuario);
+        frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -440,13 +444,12 @@ public class FrmRegistro extends javax.swing.JFrame {
 
     private void lblFotoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFotoMousePressed
         JFileChooser jfc = new JFileChooser();
-        FileFilter filtroImagenes = new FileNameExtensionFilter("Imágenes", 
+        FileFilter filtroImagenes = new FileNameExtensionFilter("Imágenes",
                 ImageIO.getReaderFileSuffixes());
         jfc.setFileFilter(filtroImagenes);
         jfc.setAcceptAllFileFilterUsed(false);
         if (jfc.showOpenDialog(this)
-            == 
-            JFileChooser.APPROVE_OPTION){
+                == JFileChooser.APPROVE_OPTION) {
             try {
                 File fichero = jfc.getSelectedFile();
                 BufferedImage im = ImageIO.read(fichero);
@@ -464,8 +467,8 @@ public class FrmRegistro extends javax.swing.JFrame {
                 graphics2D.dispose();
                 lblFoto.setText("");
                 lblFoto.setIcon(new ImageIcon(imag));
-                ImageIO.write(bi, "jpg", 
-                        new File("images",fichero.getName()));
+                ImageIO.write(bi, "jpg",
+                        new File("images", fichero.getName()));
                 imagen = fichero.getName();
             } catch (IOException ex) {
                 Logger.getLogger(FrmRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -508,7 +511,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        for (String s : ImageIO.getReaderFileSuffixes()){
+        for (String s : ImageIO.getReaderFileSuffixes()) {
             System.out.println(s);
         }
         /* Create and display the form */
