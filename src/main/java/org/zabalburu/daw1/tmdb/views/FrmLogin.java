@@ -199,10 +199,11 @@ public class FrmLogin extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, 
                 "Bienvenido a la Aplicación");
+            this.dispose();
             FrmPrincipal frm = new FrmPrincipal();
             frm.setUsuario(usu);
             frm.setVisible(true);
-            this.dispose();
+            
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 

@@ -5,6 +5,7 @@
 package org.zabalburu.daw1.tmdb.panels;
 
 import info.movito.themoviedbapi.model.core.Movie;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -19,13 +20,14 @@ import mdlaf.MaterialLookAndFeel;
 import mdlaf.themes.MaterialOceanicTheme;
 import org.zabalburu.daw1.tmdb.componentes.VoteJLabel;
 import org.zabalburu.daw1.tmdb.servicio.TMDBServicio;
+import org.zabalburu.daw1.tmdb.views.FrmDetallePelicula;
 
 /**
  *
  * @author ichueca
  */
 public class PnlPelicula extends javax.swing.JPanel {
-
+    private TMDBServicio servicio = new TMDBServicio();
     private Movie pelicula;
 
     public Movie getPelicula() {
@@ -73,9 +75,15 @@ public class PnlPelicula extends javax.swing.JPanel {
         lblVotos = new org.zabalburu.daw1.tmdb.componentes.VoteJLabel();
         lblPoster = new javax.swing.JLabel();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(120, 230));
         setMinimumSize(new java.awt.Dimension(120, 230));
         setPreferredSize(new java.awt.Dimension(120, 231));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         setLayout(null);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -90,6 +98,13 @@ public class PnlPelicula extends javax.swing.JPanel {
         lblPoster.setBounds(0, 0, 92, 138);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        this.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        new FrmDetallePelicula(servicio.getPelicula(pelicula.getId()))
+                .setVisible(true);
+        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_formMousePressed
+
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(new MaterialLookAndFeel(
@@ -101,6 +116,7 @@ public class PnlPelicula extends javax.swing.JPanel {
         frm.setSize(100, 240);
 
         Movie movie = new TMDBServicio().getNowPlaying().get(0);
+       
         PnlPelicula peli = new PnlPelicula(movie);
         frm.add(peli);
         frm.setLocationRelativeTo(null);

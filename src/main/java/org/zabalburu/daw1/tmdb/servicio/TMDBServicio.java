@@ -5,6 +5,7 @@
 package org.zabalburu.daw1.tmdb.servicio;
 
 import info.movito.themoviedbapi.model.core.Movie;
+import info.movito.themoviedbapi.model.movies.MovieDb;
 import java.util.List;
 import org.zabalburu.daw1.tmdb.dao.TMDBDAO;
 import org.zabalburu.daw1.tmdb.dao.TMDBImpl;
@@ -101,5 +102,9 @@ public class TMDBServicio {
     
     public List<Movie> getPopular(){
         return tmdbDao.getPopular();
+    }
+    
+    public MovieDb getPelicula(Integer id){
+        return tmdbDao.getPelicula(id);
     }
 }

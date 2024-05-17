@@ -5,6 +5,7 @@
 package org.zabalburu.daw1.tmdb.dao;
 
 import info.movito.themoviedbapi.model.core.Movie;
+import info.movito.themoviedbapi.model.movies.MovieDb;
 import java.util.List;
 
 /**
@@ -15,4 +16,5 @@ public interface TMDBDAO {
     List<Movie> getTopRated();
     List<Movie> getNowPlaying();
     List<Movie> getPopular();
+    MovieDb getPelicula(Integer id);
 }

@@ -34,9 +34,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
-        pnlCartelera.setPeliculas(servicio.getNowPlaying());
+        pnlValoradas.setPeliculas(servicio.getNowPlaying());
         pnlPopulares.setPeliculas(servicio.getPopular());
-        pnlValoradas.setPeliculas(servicio.getTopRated());
+        pnlCartelera.setPeliculas(servicio.getTopRated());
     }
 
     /**
@@ -52,11 +52,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pnlUsuario = new org.zabalburu.daw1.tmdb.panels.PnlUsuario();
         pnlPeliculas = new javax.swing.JPanel();
         lblCartelerar = new javax.swing.JLabel();
-        pnlCartelera = new org.zabalburu.daw1.tmdb.panels.PnlPeliculas();
+        pnlValoradas = new org.zabalburu.daw1.tmdb.panels.PnlPeliculas();
         lblPopulares = new javax.swing.JLabel();
         pnlPopulares = new org.zabalburu.daw1.tmdb.panels.PnlPeliculas();
         lblValoradas = new javax.swing.JLabel();
-        pnlValoradas = new org.zabalburu.daw1.tmdb.panels.PnlPeliculas();
+        pnlCartelera = new org.zabalburu.daw1.tmdb.panels.PnlPeliculas();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("The Movie Database");
@@ -79,7 +79,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        pnlPeliculas.add(pnlCartelera, gridBagConstraints);
+        pnlPeliculas.add(pnlValoradas, gridBagConstraints);
 
         lblPopulares.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblPopulares.setText("Populares");
@@ -115,7 +115,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        pnlPeliculas.add(pnlValoradas, gridBagConstraints);
+        pnlPeliculas.add(pnlCartelera, gridBagConstraints);
 
         getContentPane().add(pnlPeliculas, java.awt.BorderLayout.CENTER);
 

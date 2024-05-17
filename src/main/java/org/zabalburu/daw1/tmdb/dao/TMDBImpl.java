@@ -8,7 +8,9 @@ import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.model.core.Movie;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.movielists.MovieResultsPageWithDates;
+import info.movito.themoviedbapi.model.movies.MovieDb;
 import info.movito.themoviedbapi.tools.TmdbException;
+import info.movito.themoviedbapi.tools.appendtoresponse.MovieAppendToResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -57,7 +59,19 @@ public class TMDBImpl implements TMDBDAO{
     
     public static void main(String[] args) {
         TMDBDAO dao = new TMDBImpl();
-        System.out.println(dao.getPopular().get(0).getTitle());
+        MovieDb peli = dao.getPelicula(823464);
+    }
+
+    @Override
+    public MovieDb getPelicula(Integer id) {
+        try {
+            return api.getMovies().getDetails(id, "es-ES",
+                    MovieAppendToResponse.CREDITS,
+                    MovieAppendToResponse.RELEASE_DATES);
+        } catch (TmdbException ex) {
+            Logger.getLogger(TMDBImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }
